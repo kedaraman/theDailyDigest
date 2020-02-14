@@ -6,25 +6,33 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  
 <html>
-  <body>
-	<%
-	    UserService userService = UserServiceFactory.getUserService();
-	    User user = userService.getCurrentUser();
-	    if (user != null) {
-	      pageContext.setAttribute("user", user);
-	%>
-	<p>	Hello, ${fn:escapeXml(user.nickname)}! (You can
-	<a 	href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-	<%
-	    } else {
-	%>
-	<p>Hello!
-	<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-	to include your name with greetings you post.</p>
-	<%
-	    }
-	%>
-
-  </body>
+	<head>
+			<title>The Daily Digest</title>
+			<!-- insert CSS files here -->
+	</head>
+	
+	<body>
+		<div id="header">
+			<h1 id="title">the daily digest</h1>
+			
+			<%
+			    UserService userService = UserServiceFactory.getUserService();
+			    User user = userService.getCurrentUser();
+			    if (user != null) {
+			      pageContext.setAttribute("user", user);
+			%>
+			<p>	Hello, ${fn:escapeXml(user.nickname)}! </p>
+			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>"><button> Sign Out</button></a>
+			<%
+			    } else {
+			%>
+			<p>Hello!</p>
+			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>"><button> Sign In</button></a>
+			<%
+			    }
+			%>
+		</div>
+		
+	</body>
 
 </html>
