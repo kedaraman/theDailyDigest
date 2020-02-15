@@ -31,6 +31,14 @@
 			<%
 			    }
 			%>
+			
+			<% 
+				if(user != null){
+			%>
+			<a href="/createPost.jsp"><button>Create New Blog Post</button></a>
+			<%
+				}
+			%>
 		</div>
 		
 	</body>
