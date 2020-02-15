@@ -86,7 +86,7 @@
 		    // view of the Greetings belonging to the selected Guestbook.
 		    
 		    Query query = new Query("Blogpost", blogKey).addSort("user", Query.SortDirection.DESCENDING).addSort("date", Query.SortDirection.DESCENDING);
-		    List<Entity> blogposts = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(5));
+		    List<Entity> blogposts = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(Integer.MAX_VALUE));
 
 		    if (blogposts.isEmpty()) {
 
@@ -133,7 +133,7 @@
 			
 		%>
 		
-		<a href="/seeAllPosts.jsp">See All Blog Posts</a>
+		<a href="/landingPage.jsp">Go Back to Main Page</a>
 		
 		
 	</body>

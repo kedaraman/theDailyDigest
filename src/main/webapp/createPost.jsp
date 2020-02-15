@@ -32,77 +32,15 @@
 	</head>
 	
 	<body>
-	
 		<%
 			String blogName = request.getParameter("blogName");
-		
+			
 			if(blogName == null){
 				blogName = "default";
 			}
 			pageContext.setAttribute("blogName", blogName);
-			
-			UserService userService = UserServiceFactory.getUserService();
-			User user = userService.getCurrentUser();
-
-			if (user != null) {
-				pageContext.setAttribute("user", user);
-			} else {
-				response.getWriter().println("User Request Null");
-			}
-			
-			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		    Key blogKey = KeyFactory.createKey("theDailyDigest", blogName);
-		    
-		    // Run an ancestor query to ensure we see the most up-to-date
-		    // view of the Greetings belonging to the selected Guestbook.
-		    
-		    Query query = new Query("Blogpost", blogKey).addSort("user", Query.SortDirection.DESCENDING).addSort("date", Query.SortDirection.DESCENDING);
-		    List<Entity> blogposts = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(5));
-
-		    if (blogposts.isEmpty()) {
-
-		        %>
-		        <p>Blog '${fn:escapeXml(blogName)}' has no posts.</p>
-		        <%
-
-		    } else {
-
-		        %>
-		        <p>Messages in Blog '${fn:escapeXml(blogName)}'.</p>
-		        <%
-
-		        for (Entity blogpost : blogposts) {
-		        	
-		        	pageContext.setAttribute("blogpost_title", blogpost.getProperty("title"));
-		        	pageContext.setAttribute("blogpost_date", blogpost.getProperty("date"));
-		            pageContext.setAttribute("blogpost_content", blogpost.getProperty("content"));
-		            
-		            if (blogpost.getProperty("user") == null) {
-		            	
-		                %>
-		                <p>An anonymous person wrote:</p>
-		                <%
-		                
-		            } else {
-		            	
-		                pageContext.setAttribute("blogpost_user", blogpost.getProperty("user"));
-		                %>
-		                <p><b>${fn:escapeXml(blogpost_user.nickname)}</b> wrote:</p>
-		                <%
-		                
-		            }
-
-		            %>
-		            <blockquote>${fn:escapeXml(blogpost_title)}</blockquote>
-		            <blockquote>${fn:escapeXml(blogpost_date)}</blockquote>
-		            <blockquote>${fn:escapeXml(blogpost_content)}</blockquote>
-		            <%
-
-		        }
-
-		    }
-			
 		%>
+		
 	
 		<div id="header">
 			<h1 id="title">the daily digest (Create Post)</h1>

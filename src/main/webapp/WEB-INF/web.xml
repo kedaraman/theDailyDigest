@@ -15,6 +15,11 @@
   		<servlet-class>project1.CreatePostServlet</servlet-class>
   </servlet>
   
+  <servlet>
+  		<servlet-name>seeAllPosts</servlet-name>
+  		<servlet-class>project1.SeeAllPostsServlet</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
   		<servlet-name>landingPage</servlet-name>
   		<url-pattern>/landingPage</url-pattern>
@@ -24,6 +29,12 @@
   		<servlet-name>createPost</servlet-name>
   		<url-pattern>/createPost</url-pattern>
   </servlet-mapping>
+  
+  <servlet-mapping>
+  		<servlet-name>seeAllPosts</servlet-name>
+  		<url-pattern>/seeAllPosts</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>landingPage.jsp</welcome-file>
   </welcome-file-list>

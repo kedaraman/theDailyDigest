@@ -55,7 +55,7 @@ public class CreatePostServlet extends HttpServlet{
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(blogpost);
-    resp.sendRedirect("/createPost.jsp?blogName=" + blogName);
+    resp.sendRedirect("/landingPage.jsp?blogName=" + blogName);
 
 	}
 }
