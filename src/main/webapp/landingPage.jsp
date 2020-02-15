@@ -56,10 +56,14 @@
 				if(user != null){
 			%>
 			<a href="/createPost.jsp"><button>Create New Blog Post</button></a>
+			<a href= "/subscribe" ><button>Subscribe</button></a>
 			<%
 				}
 			%>
+			
 		</div>
+		
+		
 		
 		
 		<%
