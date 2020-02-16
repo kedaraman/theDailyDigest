@@ -9,6 +9,8 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.FetchOptions;
 
 import com.google.appengine.api.users.User;
 
@@ -21,6 +23,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 import java.io.IOException;
 
 import java.util.Date;
+import java.util.List;
 
  
 
@@ -32,7 +35,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class UnsubscribeServlet extends HttpServlet{
 	
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 
             throws IOException {
 
@@ -44,23 +47,8 @@ public class UnsubscribeServlet extends HttpServlet{
     } else {
     	resp.getWriter().println("No user");
     }
-
-
-//    String blogName = req.getParameter("blogName");
-//    Key blogKey = KeyFactory.createKey("theDailyDigest", blogName);
-//    String content = req.getParameter("content");
-//    String title = req.getParameter("title");
-//    Date date = new Date();
-//    Entity blogpost = new Entity("Blogpost", blogKey);
-//    blogpost.setProperty("user", user);
-//    blogpost.setProperty("date", date);
-//    blogpost.setProperty("title", title);
-//    blogpost.setProperty("content", content);
-//
-//
-//
-//    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-//    datastore.put(blogpost);
+    
+    
 //    resp.sendRedirect("/landingPage.jsp?blogName=" + blogName);
 
 	}
