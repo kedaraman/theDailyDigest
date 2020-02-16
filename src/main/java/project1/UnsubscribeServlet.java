@@ -48,7 +48,7 @@ public class UnsubscribeServlet extends HttpServlet{
     	resp.getWriter().println("No user");
     }
     
-    Key blogKey = KeyFactory.createKey("emailList", user.getEmail());
+    Key blogKey = KeyFactory.createKey("emailList", "default");
 	Entity email = new Entity("Email", blogKey);
 	email.setProperty("isSubscribed", false);
 	email.setProperty("email", user.getEmail());

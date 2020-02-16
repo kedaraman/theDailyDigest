@@ -44,7 +44,7 @@ public class SubscribeServlet extends HttpServlet{
     	resp.getWriter().println("No user");
     }
     
-	Key blogKey = KeyFactory.createKey("emailList", user.getEmail());
+	Key blogKey = KeyFactory.createKey("emailList", "default");
 	Entity email = new Entity("Email", blogKey);
 	email.setProperty("isSubscribed", true);
 	email.setProperty("email", user.getEmail());
