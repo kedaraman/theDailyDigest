@@ -85,7 +85,7 @@
 		    // Run an ancestor query to ensure we see the most up-to-date
 		    // view of the Greetings belonging to the selected Guestbook.
 		    
-		    Query query = new Query("Blogpost", blogKey).addSort("user", Query.SortDirection.DESCENDING).addSort("date", Query.SortDirection.DESCENDING);
+		    Query query = new Query("Blogpost", blogKey).addSort("date", Query.SortDirection.DESCENDING);
 		    List<Entity> blogposts = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(5));
 
 		    if (blogposts.isEmpty()) {
