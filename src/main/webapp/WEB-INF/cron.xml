@@ -3,6 +3,6 @@
 <cron>
 <url>/cronJob</url>
 <description>Notifies subscribers every day</description>
-<schedule>every day 17:00</schedule>
+<schedule>every day 6:29</schedule>
 </cron>
 </cronentries>

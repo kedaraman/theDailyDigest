@@ -6,5 +6,6 @@
     </datastore-index>
     <datastore-index kind="Email" ancestor="true" source="manual">
     	<property name="email" direction="desc"/>
+    	<property name="isSubscribed" direction="desc"/>
     </datastore-index>
 </datastore-indexes>

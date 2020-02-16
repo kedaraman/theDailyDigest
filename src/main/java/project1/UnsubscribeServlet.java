@@ -48,6 +48,31 @@ public class UnsubscribeServlet extends HttpServlet{
     	resp.getWriter().println("No user");
     }
     
+    Key blogKey = KeyFactory.createKey("emailList", user.getEmail());
+	Entity email = new Entity("Email", blogKey);
+	email.setProperty("isSubscribed", false);
+	email.setProperty("email", user.getEmail());
+
+	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+	
+	Query query = new Query("Email", blogKey);
+    List<Entity> emails = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(Integer.MAX_VALUE));
+    boolean isFound = false;
+	
+    for(Entity e: emails) {
+    	
+    	if(e.getProperty("email").equals(email.getProperty("email"))) {
+    		e.setProperty("isSubscribed", false);
+    		datastore.put(e);
+    		isFound = true;
+    		break;
+    	}
+    }
+    
+	if(!isFound) {
+		datastore.put(email);
+	}
+    
     
 //    resp.sendRedirect("/landingPage.jsp?blogName=" + blogName);
 

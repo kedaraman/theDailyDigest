@@ -5,19 +5,18 @@ import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 
 import com.google.appengine.api.datastore.Entity;
-
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 
 import com.google.appengine.api.datastore.KeyFactory;
-
+import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.users.User;
 
 import com.google.appengine.api.users.UserService;
 
 import com.google.appengine.api.users.UserServiceFactory;
 
- 
-
+import java.util.List;
 import java.io.IOException;
 
 import java.util.Date;
@@ -47,10 +46,28 @@ public class SubscribeServlet extends HttpServlet{
     
 	Key blogKey = KeyFactory.createKey("emailList", user.getEmail());
 	Entity email = new Entity("Email", blogKey);
+	email.setProperty("isSubscribed", true);
 	email.setProperty("email", user.getEmail());
 
 	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-	datastore.put(email);
+	
+	Query query = new Query("Email", blogKey);
+    List<Entity> emails = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(Integer.MAX_VALUE));
+    boolean isFound = false;
+	
+    for(Entity e: emails) {
+    	
+    	if(e.getProperty("email").equals(email.getProperty("email"))) {
+    		e.setProperty("isSubscribed", true);
+    		datastore.put(e);
+    		isFound = true;
+    		break;
+    	}
+    }
+    
+	if(!isFound) {
+		datastore.put(email);
+	}
     
 }
 	
