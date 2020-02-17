@@ -1,8 +1,78 @@
 body {
    font-family: Verdana, Helvetica, sans-serif;
-   background-image: url("avocado2.jpg");
+   /*background-image: url("avocado2.jpg");*/
+   background-color: beige;
 }
 
 #headerHR {
 	border-width: thick;
+}
+
+#header {
+	background-image: url("avocado3.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	height: 305px;
+	border-style: solid;
+	border-width: 5px;
+	margin-bottom: 25px;
+	border-color: green;
+}
+
+#divBlogPost {
+	border-style: solid;
+	border-width: 3px;
+	background-image: url("food.jpeg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	min-height: 300px;
+	margin-bottom: 15px;
+	padding-left: 15%;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	padding-right: 15%;
+}
+
+.but {
+}
+
+#byUser {
+	font-style: italic;
+	font-size: 20px;
+}
+
+.createbut {
+	
+	margin-right: 5px;
+}
+
+.userinput {
+	margin: 2px;
+	
+}
+
+#postblog{
+	background-color: green;
+	font-size: 30px;
+	
+	
+	
+	
+}
+
+#cancelbut{
+	background-color: #ff0000;
+	font-size:30px;
+	
+}
+
+h1 {
+	font-size: 65px;
+	margin-bottom: 100px;
+}
+
+h3 {
+	font-family: Impact, Charcoal, sans-serif;
+	font-size: 30px;
+	
 }

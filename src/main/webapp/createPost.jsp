@@ -50,20 +50,20 @@
 		</div>
 		
 		<form action="/createPost" method="post">
-		      <div>Title: <textarea name="title" rows="1" cols="150"></textarea></div>
+		      <div>Title: <br><textarea class="userinput" name="title" rows="1" cols="150" required></textarea></div>
 		      <div>Category: 
-		      	<select id="category" name="category">
+		      	<select id="category" name="category" required>
 		      		<option value="vegan">vegan</option>
 		      		<option value="keto">keto</option>
 		      		<option value="paleo">paleo</option>
-		      		<option value="none">none</option>
+		      		<option value="none" selected>none</option>
 		      	</select>
 		      </div>
-		      <div>Blog Content: <textarea name="content" rows="20" cols="150"></textarea></div>
-		      <div><input type="submit" value="Post Blog" /></div>
-		      <input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
+		      <div>Blog Content: <br><textarea class="userinput" name="content" rows="20" cols="150" required></textarea></div><br>
+		      <div><input id="postblog" class="createbut" type="submit" value="Post Blog" />
+		      <input " class="createbut" type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/></div>
     	</form>
-    	<a href="/landingPage.jsp"><button>Delete Blog Post</button></a>
+    	<a href="/landingPage.jsp"><button id="cancelbut">Delete Blog Post</button></a>
 		
 	</body>
 

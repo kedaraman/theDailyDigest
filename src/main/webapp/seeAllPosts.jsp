@@ -64,7 +64,7 @@
 			<%
 				}
 			%>
-			<hr id="headerHR">	
+		
 		</div>
 		
 		

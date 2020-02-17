@@ -43,12 +43,12 @@
 			      pageContext.setAttribute("user", user);
 			%>
 			<p>	Hello, ${fn:escapeXml(user.nickname)}! </p>
-			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>"><button> Sign Out</button></a>
+			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="but" id="butSO"><button> Sign Out</button></a>
 			<%
 			    } else {
 			%>
 			<p>Hello!</p>
-			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>"><button> Sign In</button></a>
+			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class="but" id="butSI"><button> Sign In</button></a>
 			<%
 			    }
 			%>
@@ -56,15 +56,15 @@
 			<% 
 				if(user != null){
 			%>
-			<a href="/createPost.jsp"><button>Create New Blog Post</button></a>
-			<a href= "/subscribe" ><button>Subscribe</button></a>
-			<a href= "/unsubscribe" ><button>Unsubscribe</button></a>
+			<a href="/createPost.jsp" class="but" id="butCREATE"><button>Create New Blog Post</button></a>
+			<a href= "/subscribe" class="but" id="butSUBSCRIBE"><button>Subscribe</button></a>
+			<a href= "/unsubscribe" class="but" id="butUNSUBSCRIBE" ><button>Unsubscribe</button></a>
 			
 			<!-- <a href= "/cronJob" ><button>Send Email</button></a>-->
 			<%
 				}
 			%>
-			<hr id="headerHR">	
+			<!-- <hr id="headerHR">	-->
 		</div>
 		
 		
@@ -123,15 +123,16 @@
 		            }
 		            
 		            %>
-		            	<h3>${fn:escapeXml(blogpost_title)}</h3>
-		            	<p>By ${fn:escapeXml(blogpost_user.nickname)}</p>
-		            	<p>Date: ${fn:escapeXml(blogpost_date)}</p>
-		            	<p>Category: ${fn:escapeXml(blogpost_category)}</p>
+		            	<div id="divBlogPost">
+		            	<h3 class="blogpost">${fn:escapeXml(blogpost_title)}</h3>
+		            	<p id="byUser" class="blogpost">By ${fn:escapeXml(blogpost_user.nickname)}</p>
+		            	<p class="blogpost">Date: ${fn:escapeXml(blogpost_date)}</p>
+		            	<p class="blogpost">Category: ${fn:escapeXml(blogpost_category)}</p>
 		            	
-		            	<p>${fn:escapeXml(blogpost_content)}</p>
+		            	<p class="blogpost">${fn:escapeXml(blogpost_content)}</p>
 		            	
-		            	<hr>
-		            	
+		            	<!-- <hr>-->
+		            	</div>
 
 		                
 		                
