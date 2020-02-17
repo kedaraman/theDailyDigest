@@ -72,6 +72,7 @@ public class UnsubscribeServlet extends HttpServlet{
 	if(!isFound) {
 		datastore.put(email);
 	}
+	resp.sendRedirect("/landingPage.jsp?blogName=" + "default");
     
     
 //    resp.sendRedirect("/landingPage.jsp?blogName=" + blogName);

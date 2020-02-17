@@ -10,6 +10,8 @@
   		<servlet-class>project1.LandingPageServlet</servlet-class>
   </servlet>
   
+  
+  
   <servlet>
   		<servlet-name>cronJob</servlet-name>
   		<servlet-class>project1.CronJobServlet</servlet-class>
@@ -39,6 +41,8 @@
   		<servlet-name>landingPage</servlet-name>
   		<url-pattern>/landingPage</url-pattern>
   </servlet-mapping>
+  
+
   
   <servlet-mapping>
   		<servlet-name>cronJob</servlet-name>

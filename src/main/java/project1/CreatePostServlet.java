@@ -44,12 +44,15 @@ public class CreatePostServlet extends HttpServlet{
     Key blogKey = KeyFactory.createKey("theDailyDigest", blogName);
     String content = req.getParameter("content");
     String title = req.getParameter("title");
+    String category = req.getParameter("category");
     Date date = new Date();
     Entity blogpost = new Entity("Blogpost", blogKey);
     blogpost.setProperty("user", user);
     blogpost.setProperty("date", date);
     blogpost.setProperty("title", title);
     blogpost.setProperty("content", content);
+    blogpost.setProperty("category", category);
+    
 
 
 

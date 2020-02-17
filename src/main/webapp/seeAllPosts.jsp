@@ -29,6 +29,7 @@
 	<head>
 			<title>The Daily Digest</title>
 			<!-- insert CSS files here -->
+			<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 	</head>
 	
 	<body>
@@ -56,10 +57,17 @@
 				if(user != null){
 			%>
 			<a href="/createPost.jsp"><button>Create New Blog Post</button></a>
+			<a href= "/subscribe" ><button>Subscribe</button></a>
+			<a href= "/unsubscribe" ><button>Unsubscribe</button></a>
+			
+			<!-- <a href= "/cronJob" ><button>Send Email</button></a>-->
 			<%
 				}
 			%>
+			<hr id="headerHR">	
 		</div>
+		
+		
 		
 		
 		<%
@@ -76,7 +84,7 @@
 			if (user != null) {
 				pageContext.setAttribute("user", user);
 			} else {
-				response.getWriter().println("User Request Null");
+				//response.getWriter().println("User Request Null");
 			}
 			
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -85,7 +93,7 @@
 		    // Run an ancestor query to ensure we see the most up-to-date
 		    // view of the Greetings belonging to the selected Guestbook.
 		    
-		    Query query = new Query("Blogpost", blogKey).addSort("user", Query.SortDirection.DESCENDING).addSort("date", Query.SortDirection.DESCENDING);
+		    Query query = new Query("Blogpost", blogKey).addSort("date", Query.SortDirection.DESCENDING);
 		    List<Entity> blogposts = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(Integer.MAX_VALUE));
 
 		    if (blogposts.isEmpty()) {
@@ -97,49 +105,49 @@
 		    } else {
 
 		        %>
-		        <p>Messages in Blog '${fn:escapeXml(blogName)}'.</p>
+		        
 		        <%
 
 		        for (Entity blogpost : blogposts) {
 		        	
-		        	pageContext.setAttribute("blogpost_title", blogpost.getProperty("title"));
+		        	pageContext.setAttribute("blogpost_title", (String) blogpost.getProperty("title"));
 		        	pageContext.setAttribute("blogpost_date", blogpost.getProperty("date"));
 		            pageContext.setAttribute("blogpost_content", blogpost.getProperty("content"));
-		            
-		            if (blogpost.getProperty("user") == null) {
-		            	
-		                %>
-		                <p>An anonymous person wrote:</p>
-		                <%
-		                
-		            } else {
-		            	
-		                pageContext.setAttribute("blogpost_user", blogpost.getProperty("user"));
-		                %>
-		                <p><b>${fn:escapeXml(blogpost_user.nickname)}</b> wrote:</p>
-		                <%
-		                
+		            pageContext.setAttribute("blogpost_user", blogpost.getProperty("user"));
+		            if(blogpost.getProperty("category") == null)
+		            {
+		            	pageContext.setAttribute("blogpost_category", "none");
 		            }
-
+		            else{
+		            	pageContext.setAttribute("blogpost_category", blogpost.getProperty("category"));
+		            }
+		            
 		            %>
-		            <blockquote>${fn:escapeXml(blogpost_title)}</blockquote>
-		            <blockquote>${fn:escapeXml(blogpost_date)}</blockquote>
-		            <blockquote>${fn:escapeXml(blogpost_content)}</blockquote>
+		            	<h3>${fn:escapeXml(blogpost_title)}</h3>
+		            	<p>By ${fn:escapeXml(blogpost_user.nickname)}</p>
+		            	<p>Date: ${fn:escapeXml(blogpost_date)}</p>
+		            	<p>Category: ${fn:escapeXml(blogpost_category)}</p>
+		            	
+		            	<p>${fn:escapeXml(blogpost_content)}</p>
+		            	
+		            	<hr>
+		            	
+
+		                
+		                
+		            
+		            
 		            <%
+		            	
 
 		        }
 
 		    }
 			
 		%>
-		
 		<a href="/landingPage.jsp">Go Back to Main Page</a>
 		
 		
 	</body>
-	
-	
-	<!--  <input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>-->
-	
 
 </html>

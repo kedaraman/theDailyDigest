@@ -29,6 +29,7 @@
 	<head>
 			<title>The Daily Digest- Create Post</title>
 			<!-- insert CSS files here -->
+			<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 	</head>
 	
 	<body>
@@ -50,6 +51,14 @@
 		
 		<form action="/createPost" method="post">
 		      <div>Title: <textarea name="title" rows="1" cols="150"></textarea></div>
+		      <div>Category: 
+		      	<select id="category" name="category">
+		      		<option value="vegan">vegan</option>
+		      		<option value="keto">keto</option>
+		      		<option value="paleo">paleo</option>
+		      		<option value="none">none</option>
+		      	</select>
+		      </div>
 		      <div>Blog Content: <textarea name="content" rows="20" cols="150"></textarea></div>
 		      <div><input type="submit" value="Post Blog" /></div>
 		      <input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>

@@ -1,0 +1,8 @@
+body {
+   font-family: Verdana, Helvetica, sans-serif;
+   background-image: url("avocado2.jpg");
+}
+
+#headerHR {
+	border-width: thick;
+}

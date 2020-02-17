@@ -94,7 +94,7 @@
 		    // view of the Greetings belonging to the selected Guestbook.
 		    
 		    Query query = new Query("Blogpost", blogKey).addSort("date", Query.SortDirection.DESCENDING);
-		    List<Entity> blogposts = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(5));
+		    List<Entity> blogposts = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(Integer.MAX_VALUE));
 
 		    if (blogposts.isEmpty()) {
 
@@ -110,52 +110,48 @@
 
 		        for (Entity blogpost : blogposts) {
 		        	
-		        	pageContext.setAttribute("blogpost_title", (String) blogpost.getProperty("title"));
-		        	pageContext.setAttribute("blogpost_date", blogpost.getProperty("date"));
-		            pageContext.setAttribute("blogpost_content", blogpost.getProperty("content"));
-		            pageContext.setAttribute("blogpost_user", blogpost.getProperty("user"));
-		            if(blogpost.getProperty("category") == null)
-		            {
-		            	pageContext.setAttribute("blogpost_category", "none");
-		            }
-		            else{
-		            	pageContext.setAttribute("blogpost_category", blogpost.getProperty("category"));
-		            }
-		            
-		            %>
-		            	<h3>${fn:escapeXml(blogpost_title)}</h3>
-		            	<p>By ${fn:escapeXml(blogpost_user.nickname)}</p>
-		            	<p>Date: ${fn:escapeXml(blogpost_date)}</p>
-		            	<p>Category: ${fn:escapeXml(blogpost_category)}</p>
+		        		String bpcat = (String) blogpost.getProperty("category");
+		        	
+			        	pageContext.setAttribute("blogpost_title", (String) blogpost.getProperty("title"));
+			        	pageContext.setAttribute("blogpost_date", blogpost.getProperty("date"));
+			            pageContext.setAttribute("blogpost_content", blogpost.getProperty("content"));
+			            pageContext.setAttribute("blogpost_user", blogpost.getProperty("user"));
+			            if(blogpost.getProperty("category") == null)
+			            {
+			            	pageContext.setAttribute("blogpost_category", "none");
+			            	bpcat = "none";
+			            }
+			            else{
+			            	pageContext.setAttribute("blogpost_category", blogpost.getProperty("category"));
+			            }
+			            
+			        if(bpcat.equals("vegan")){   
+			            %>
+			            	<h3>${fn:escapeXml(blogpost_title)}</h3>
+			            	<p>By ${fn:escapeXml(blogpost_user.nickname)}</p>
+			            	<p>Date: ${fn:escapeXml(blogpost_date)}</p>
+			            	<p>Category: ${fn:escapeXml(blogpost_category)}</p>
+			            	
+			            	<p>${fn:escapeXml(blogpost_content)}</p>
+			            	
+			            	<hr>
+			            	
+	
+			                
+			                
+			            
+			            
+			            <%
 		            	
-		            	<p>${fn:escapeXml(blogpost_content)}</p>
-		            	
-		            	<hr>
-		            	
-
-		                
-		                
-		            
-		            
-		            <%
-		            	
-
+		        	}
 		        }
 
 		    }
 			
 		%>
-		
-		<a href="/seeAllPosts.jsp">See All Blog Posts</a>
-		<a href="/vegan.jsp">See All Vegan Posts</a>
-		<a href="/keto.jsp">See All Keto Posts</a>
-		<a href="/paleo.jsp">See All Paleo Posts</a>
+		<a href="/landingPage.jsp">Go Back to Main Page</a>
 		
 		
 	</body>
-	
-	
-	<!--  <input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>-->
-	
 
 </html>

@@ -68,6 +68,7 @@ public class SubscribeServlet extends HttpServlet{
 	if(!isFound) {
 		datastore.put(email);
 	}
+	resp.sendRedirect("/landingPage.jsp?blogName=" + "default");
     
 }
 	
@@ -100,7 +101,7 @@ public class SubscribeServlet extends HttpServlet{
 //
 //    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 //    datastore.put(blogpost);
-//    resp.sendRedirect("/landingPage.jsp?blogName=" + blogName);
+//      resp.sendRedirect("/landingPage.jsp?blogName=" + blogName);
 
 	}
 }

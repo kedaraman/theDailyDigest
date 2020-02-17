@@ -41,8 +41,8 @@ import com.google.appengine.api.users.UserServiceFactory;
 public class CronJobServlet extends HttpServlet {
 	
 	private static final Logger _logger = Logger.getLogger(CronJobServlet.class.getName());
-//	public final static long MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
-	public final static long MILLISECONDS_PER_DAY = 5 * 60 * 1000;//TODO: CHANGE back to 24 HR
+	public final static long MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
+//	public final static long MILLISECONDS_PER_DAY = 5 * 60 * 1000;//TODO: CHANGE back to 24 HR
 
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -68,7 +68,8 @@ public class CronJobServlet extends HttpServlet {
 		    	emailContent += "Title: " + blogpost.getProperty("title") + "\n";
 		    	emailContent += "Date: " + blogpost.getProperty("date") + "\n";
 		    	emailContent += "User: " + blogpost.getProperty("user") + "\n";
-		    	emailContent += "\t" + blogpost.getProperty("content") + "\n\n\n";
+		    	emailContent += "Category: " + blogpost.getProperty("category") + "\n";
+		    	emailContent += blogpost.getProperty("content") + "\n\n\n";
 	    	}
 	    	
 	    }
