@@ -43,12 +43,12 @@
 			      pageContext.setAttribute("user", user);
 			%>
 			<p>	Hello, ${fn:escapeXml(user.nickname)}! </p>
-			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="but" target="_blank">Sign Out</a>
+			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="but" >Sign Out</a>
 			<%
 			    } else {
 			%>
 			<p>Hello!</p>
-			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class="but" target="_blank">Sign In</a>
+			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class="but" >Sign In</a>
 			<%
 			    }
 			%>
@@ -56,9 +56,9 @@
 			<% 
 				if(user != null){
 			%>
-			<a href="/createPost.jsp" target="_blank">Create New Blog Post</a>
-			<a href= "/subscribe" target="_blank">Subscribe</a>
-			<a href= "/unsubscribe" target="_blank">Unsubscribe</a>
+			<a href="/createPost.jsp" >Create New Blog Post</a>
+			<a href= "/subscribe" >Subscribe</a>
+			<a href= "/unsubscribe" >Unsubscribe</a>
 			
 			<!-- <a href= "/cronJob" ><button>Send Email</button></a>-->
 			<%
@@ -147,10 +147,10 @@
 			
 		%>
 		
-		<a href="/seeAllPosts.jsp" target="_blank">See All Blog Posts</a>
-		<a href="/vegan.jsp" target="_blank">See All Vegan Posts</a>
-		<a href="/keto.jsp" target="_blank">See All Keto Posts</a>
-		<a href="/paleo.jsp" target="_blank">See All Paleo Posts</a>
+		<a href="/seeAllPosts.jsp" >See All Blog Posts</a>
+		<a href="/vegan.jsp" >See All Vegan Posts</a>
+		<a href="/keto.jsp" >See All Keto Posts</a>
+		<a href="/paleo.jsp" >See All Paleo Posts</a>
 		
 		
 	</body>

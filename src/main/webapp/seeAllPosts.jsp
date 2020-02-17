@@ -43,12 +43,12 @@
 			      pageContext.setAttribute("user", user);
 			%>
 			<p>	Hello, ${fn:escapeXml(user.nickname)}! </p>
-			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>"><button> Sign Out</button></a>
+			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Sign Out</a>
 			<%
 			    } else {
 			%>
 			<p>Hello!</p>
-			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>"><button> Sign In</button></a>
+			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign In</a>
 			<%
 			    }
 			%>
@@ -56,9 +56,9 @@
 			<% 
 				if(user != null){
 			%>
-			<a href="/createPost.jsp" class="but" target="_blank">Create New Blog Post</a>
-			<a href= "/subscribe" class="but" target="_blank">Subscribe</a>
-			<a href= "/unsubscribe" class="but" target="_blank">Unsubscribe</a>
+			<a href="/createPost.jsp" class="but" >Create New Blog Post</a>
+			<a href= "/subscribe" class="but" >Subscribe</a>
+			<a href= "/unsubscribe" class="but" >Unsubscribe</a>
 			
 			<!-- <a href= "/cronJob" ><button>Send Email</button></a>-->
 			<%
