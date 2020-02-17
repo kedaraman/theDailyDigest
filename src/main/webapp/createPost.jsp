@@ -44,7 +44,7 @@
 		
 	
 		<div id="header">
-			<h1 id="title">the daily digest (Create Post)</h1>
+			<h1 id="title">the daily digest</h1>
 			
 			
 		</div>
@@ -60,10 +60,10 @@
 		      	</select>
 		      </div>
 		      <div>Blog Content: <br><textarea class="userinput" name="content" rows="20" cols="150" required></textarea></div><br>
-		      <div><input id="postblog" class="createbut" type="submit" value="Post Blog" />
-		      <input " class="createbut" type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/></div>
+		      <a><input id="postblog" type="submit" value="Post Blog" /></a>
+		      <input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
     	</form>
-    	<a href="/landingPage.jsp"><button id="cancelbut">Delete Blog Post</button></a>
+    	<a href="/landingPage.jsp" id="delete">Delete Blog Post</a>
 		
 	</body>
 

@@ -56,9 +56,9 @@
 			<% 
 				if(user != null){
 			%>
-			<a href="/createPost.jsp"><button>Create New Blog Post</button></a>
-			<a href= "/subscribe" ><button>Subscribe</button></a>
-			<a href= "/unsubscribe" ><button>Unsubscribe</button></a>
+			<a href="/createPost.jsp" class="but" target="_blank">Create New Blog Post</a>
+			<a href= "/subscribe" class="but" target="_blank">Subscribe</a>
+			<a href= "/unsubscribe" class="but" target="_blank">Unsubscribe</a>
 			
 			<!-- <a href= "/cronJob" ><button>Send Email</button></a>-->
 			<%
@@ -123,14 +123,16 @@
 		            }
 		            
 		            %>
-		            	<h3>${fn:escapeXml(blogpost_title)}</h3>
-		            	<p>By ${fn:escapeXml(blogpost_user.nickname)}</p>
-		            	<p>Date: ${fn:escapeXml(blogpost_date)}</p>
-		            	<p>Category: ${fn:escapeXml(blogpost_category)}</p>
+		            	<div id="divBlogPost">
+		            	<h3 class="blogpost">${fn:escapeXml(blogpost_title)}</h3>
+		            	<p id="byUser" class="blogpost">By ${fn:escapeXml(blogpost_user.nickname)}</p>
+		            	<p class="blogpost">Date: ${fn:escapeXml(blogpost_date)}</p>
+		            	<p class="blogpost">Category: ${fn:escapeXml(blogpost_category)}</p>
 		            	
-		            	<p>${fn:escapeXml(blogpost_content)}</p>
+		            	<p class="blogpost">${fn:escapeXml(blogpost_content)}</p>
 		            	
-		            	<hr>
+		            	<!-- <hr>-->
+		            	</div>
 		            	
 
 		                
